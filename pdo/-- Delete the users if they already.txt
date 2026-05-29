@@ -1,0 +1,10 @@
+-- Delete the users if they already exist to avoid #1396
+DROP USER IF EXISTS 'fred'@'localhost';
+DROP USER IF EXISTS 'fred'@'127.0.0.1';
+
+-- Now create them
+CREATE USER 'fred'@'localhost' IDENTIFIED BY 'zap';
+CREATE USER 'fred'@'127.0.0.1' IDENTIFIED BY 'zap';
+
+GRANT ALL PRIVILEGES ON misc.* TO 'fred'@'localhost';
+GRANT ALL PRIVILEGES ON misc.* TO 'fred'@'127.0.0.1';
